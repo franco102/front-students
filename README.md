@@ -1,50 +1,101 @@
-# React + TypeScript + Vite
+React 18 Project: Students
 
-This template provides a minimal setup to get React working in Vite with HMR and some ESLint rules.
+Este proyecto es una aplicación desarrollada con React 18 y otras tecnologías modernas. Su propósito es gestionar estudiantes mediante un sistema que incluye funcionalidades como creación, edición, eliminación y visualización de registros.
 
-Currently, two official plugins are available:
+Tecnologías utilizadas
 
-- [@vitejs/plugin-react](https://github.com/vitejs/vite-plugin-react/blob/main/packages/plugin-react/README.md) uses [Babel](https://babeljs.io/) for Fast Refresh
-- [@vitejs/plugin-react-swc](https://github.com/vitejs/vite-plugin-react-swc) uses [SWC](https://swc.rs/) for Fast Refresh
+React 18: Biblioteca para construir interfaces de usuario.
 
-## Expanding the ESLint configuration
+Vite: Herramienta de desarrollo rápida y optimizada para aplicaciones modernas.
 
-If you are developing a production application, we recommend updating the configuration to enable type aware lint rules:
+Zustand: Librería para la gestión del estado global.
 
-- Configure the top-level `parserOptions` property like this:
+Axios: Cliente HTTP para realizar solicitudes a APIs.
 
-```js
-export default tseslint.config({
-  languageOptions: {
-    // other options...
-    parserOptions: {
-      project: ['./tsconfig.node.json', './tsconfig.app.json'],
-      tsconfigRootDir: import.meta.dirname,
-    },
-  },
-})
-```
+Valibot: Librería para validaciones de datos.
 
-- Replace `tseslint.configs.recommended` to `tseslint.configs.recommendedTypeChecked` or `tseslint.configs.strictTypeChecked`
-- Optionally add `...tseslint.configs.stylisticTypeChecked`
-- Install [eslint-plugin-react](https://github.com/jsx-eslint/eslint-plugin-react) and update the config:
+Material UI: Componentes de interfaz de usuario estilizados y accesibles.
 
-```js
-// eslint.config.js
-import react from 'eslint-plugin-react'
+Tailwind CSS: Framework de diseño utilitario para estilizar la aplicación.
 
-export default tseslint.config({
-  // Set the react version
-  settings: { react: { version: '18.3' } },
-  plugins: {
-    // Add the react plugin
-    react,
-  },
-  rules: {
-    // other rules...
-    // Enable its recommended rules
-    ...react.configs.recommended.rules,
-    ...react.configs['jsx-runtime'].rules,
-  },
-})
-```
+Instalación y configuración
+
+Sigue estos pasos para clonar el repositorio, instalar las dependencias y ejecutar la aplicación en tu entorno local:
+
+Clona el repositorio:
+
+git clone https://github.com/franco102/front-students.git
+
+Accede al directorio del proyecto:
+
+cd front-students
+
+Instala las dependencias necesarias:
+
+npm install
+
+Crea un archivo .env basado en el ejemplo proporcionado:
+
+cp .env.example .env
+
+Configura las variables de entorno necesarias en el archivo .env.
+
+Inicia el servidor de desarrollo:
+
+npm run dev
+
+Abre tu navegador y accede a:
+
+http://localhost:5173
+
+Configuración de ESLint
+
+Para mantener un código limpio y consistente, el proyecto incluye una configuración básica de ESLint. Si estás desarrollando una aplicación para producción, se recomienda expandir esta configuración para habilitar reglas específicas de tipo:
+
+Configura la propiedad parserOptions en el archivo .eslintrc:
+
+{
+  "parserOptions": {
+    "project": "./tsconfig.json"
+  }
+}
+
+Instala las dependencias necesarias para soporte de TypeScript:
+
+npm install eslint-plugin-typescript @typescript-eslint/parser --save-dev
+
+Características principales
+
+Listado de estudiantes con opciones de búsqueda y paginación.
+
+Formulario para agregar y editar estudiantes, validaciones incluidas.
+
+Gestión de estado global con Zustand para un manejo eficiente de datos.
+
+Estilizado moderno con Tailwind CSS y Material UI.
+
+Contribución
+
+Si deseas contribuir a este proyecto, sigue estos pasos:
+
+Haz un fork del repositorio.
+
+Crea una rama para tu característica o corrección de errores:
+
+git checkout -b mi-nueva-funcionalidad
+
+Realiza tus cambios y commitea:
+
+git commit -m "Agregada nueva funcionalidad"
+
+Sube los cambios a tu repositorio:
+
+git push origin mi-nueva-funcionalidad
+
+Abre un pull request en GitHub.
+
+Licencia
+
+Este proyecto está bajo la licencia MIT. Consulta el archivo LICENSE para más detalles.
+
+¡Gracias por revisar este proyecto! Si tienes alguna pregunta o sugerencia, no dudes en abrir un issue o contribuir directamente.
