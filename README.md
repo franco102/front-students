@@ -29,6 +29,9 @@ Sigue estos pasos para clonar el repositorio, instalar las dependencias y ejecut
 2. **copia el archivo env. :**
    ```bash
    cp .env.example .env
+8. **Usuario y Contraseña  respectivamente para ingresar:**
+   ```bash
+   user1@example.com , password
 
 
  ## ¡Gracias por revisar este proyecto! Si tienes alguna pregunta o sugerencia, no dudes en abrir un issue o contribuir directamente.  
