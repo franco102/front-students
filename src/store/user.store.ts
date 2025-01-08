@@ -68,8 +68,7 @@ const userStore:StateCreator<UserState,[["zustand/devtools", never], ["zustand/i
             }
           }); 
       }); 
-      debugger
-      if(!!result){
+      if(!result){
         get().logout()
       }
  
