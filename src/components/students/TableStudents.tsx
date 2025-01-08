@@ -17,6 +17,7 @@ import EditIcon from "@mui/icons-material/Edit";
 import DeleteIcon from "@mui/icons-material/Delete";
 import { Student } from "../../types";
 import RemoveRedEyeIcon from '@mui/icons-material/RemoveRedEye';
+import { formatDate } from "../../helpers/general";
 
 const StudentList = () => {
   const listStudents = useStudentStore((state) => state.listStudents);
@@ -156,7 +157,7 @@ const StudentList = () => {
                       <td className="p-1">{student.birth_date}</td>
                       <td className="p-1">{student.email}</td>
                       <td className="p-1">{student.phone}</td>
-                      <td className="p-1 text-center">{student.enrollment_date}</td>
+                      <td className="p-1 text-center">{formatDate(student.enrollment_date) }</td>
                       <td className="p-1"><p className={`border ${student.status?'border-green-500 text-green-500 bg-green-100':'border-red-500 text-red-500 bg-red-100'} text-center rounded-lg p-1`}>{student.status?'Activo':'Inactivo'}</p></td>
                       <td className="p-1">
                         <div className=" grid grid-cols-3 gap-2">

@@ -98,6 +98,19 @@ export const ModalFormStudents = () => {
                       }
                       return true;
                     },
+                    notTooRecent: (value) => {
+                      const today = new Date();
+                      const threeYearsAgo = new Date(
+                        today.getFullYear() - 3,
+                        today.getMonth(),
+                        today.getDate()
+                      );
+                      const inputDate = new Date(value);
+                      if (inputDate > threeYearsAgo) {
+                        return "La fecha debe ser de al menos 3 años atrás.";
+                      }
+                      return true;
+                    },
                   },
             })}
             error={!!errors.birth_date}
@@ -130,10 +143,17 @@ export const ModalFormStudents = () => {
                     value: 9,
                     message: "El teléfono debe tener exactamente 9 caracteres.",
                   }, 
+                  pattern: {
+                    value: /^[0-9]+$/,
+                    message: "El teléfono solo debe contener números.",
+                  },
             })}
             error={!!errors.phone}
             helperText={errors.phone?.message}
             fullWidth
+            inputProps={{
+              maxLength: 9, // Asegura que no se puedan ingresar más de 9 caracteres en el campo
+            }}
           /> 
           <TextField 
             select
