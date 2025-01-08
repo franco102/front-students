@@ -1,6 +1,5 @@
 import { create, StateCreator } from "zustand";
 import { devtools, persist } from "zustand/middleware"; 
-import { isAxiosError } from "axios";
 import { Authorization, authorizationSchema } from "../types";
 import { withBackdrop } from "../helpers/general";
 import apiStudents from "../api/students";
