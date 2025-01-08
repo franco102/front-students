@@ -62,56 +62,18 @@ const userStore:StateCreator<UserState,[["zustand/devtools", never], ["zustand/i
         }
     }, 
     validateToken: async () => {  
-      try {
-        await apiStudents('/auth/validate-token',{
-          headers:{
-            'Authorization':`Bearer ${get().authorization.token}` 
-          }
-        }); 
-        
-      } catch (error) {
-        let message = 'Token invalido'; // Mensaje por defecto
-        // Verificar si el error tiene la estructura esperada
-        if ( isAxiosError(error) && error.response && error.response.data && error.response.data.message ) { 
-            // Intentar convertir el valor de 'detail' a JSON si es posible
-            let detailString = error.response.data.message as string;
-        
-            // Verificar si es un array o un string
-            if (typeof detailString === 'string') {
-              try {
-                // Intentar convertir a objeto/array en caso de que sea un string JSON válido
-                detailString = JSON.parse(detailString.replace(/'/g, '"'));
-              } catch (err) {
-                // Si falla la conversión, asumimos que es un string simple
-                message = detailString;
-              }
+      const result=await withBackdrop(async () => {
+          return await apiStudents('/auth/validate-token',{
+            headers:{
+              'Authorization':`Bearer ${get().authorization.token}` 
             }
-            // Verificar si es un array o un string
-            if (typeof detailString === 'object') {
-              try {
-                // Intentar convertir a objeto/array en caso de que sea un string JSON válido
-                detailString = JSON.parse(detailString).message??'';
-              } catch (err) {
-                // Si falla la conversión, asumimos que es un string simple
-                message = detailString;
-              }
-            }
-            // Si es un array, concatenar los mensajes
-            if (Array.isArray(detailString)) {
-              message = detailString.map((detail: { message: string }) => detail.message).join('<br>');
-            } else if (typeof detailString === 'string') {
-              // Si es un string simple, usarlo como mensaje
-              message = detailString;
-            }  
-        } 
-
-        ToastCustom.fire({
-          icon: "error",
-          title: message
-        }); 
+          }); 
+      }); 
+      debugger
+      if(!!result){
         get().logout()
-        
       }
+ 
     }, 
 });
 
